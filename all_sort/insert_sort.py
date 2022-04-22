@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-
+# 插入排序：使局部有序，将元素插入有序的序列里
 def insert_sort(seq):
     n = len(seq)
-    for i in range(n-1):
-        min_idx = i
-        for j in range(i+1, n):
-            if seq[j] < seq[min_idx]:
-                min_idx = j
-        if min_idx != i:
-            seq[min_idx], seq[i] = seq[i], seq[min_idx]
-
+    for i in range(1, n):
+        value = seq[i]
+        pos = i
+        while pos > 0 and seq[pos-1] > value:
+            seq[pos] = seq[pos-1]
+            pos -= 1
+        seq[pos] = value
 import random
 lst = list(range(10))
 random.shuffle(lst)
